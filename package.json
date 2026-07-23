@@ -6,7 +6,8 @@
     "start": "cross-env NODE_ENV=prod node src/server.js",
     "dev": "cross-env NODE_ENV=dev nodemon src/server.js",
     "uat": "cross-env NODE_ENV=uat node src/server.js",
-    "prod": "cross-env NODE_ENV=prod node src/server.js"
+    "prod": "cross-env NODE_ENV=prod node src/server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +27,9 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@jest/globals": "^30.4.1",
     "cross-env": "^10.1.0",
+    "jest": "^30.4.2",
     "nodemon": "^3.1.14"
   }
 }
