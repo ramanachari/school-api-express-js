@@ -1,7 +1,7 @@
 import * as classService from "../services/classService.js";
 
 
-export const getAllClasses = async(req,res)=>{
+export const getAllClasses = async (req, res) => {
 
     const result = await classService.getAllClasses();
 
@@ -9,7 +9,7 @@ export const getAllClasses = async(req,res)=>{
 };
 
 
-export const getClassById = async(req,res)=>{
+export const getClassById = async (req, res) => {
 
     const result =
         await classService.getClassById(req.params.id);
@@ -18,7 +18,7 @@ export const getClassById = async(req,res)=>{
 };
 
 
-export const createClass = async(req,res)=>{
+export const createClass = async (req, res) => {
 
     const result =
         await classService.createClass(req.body);
@@ -27,7 +27,7 @@ export const createClass = async(req,res)=>{
 };
 
 
-export const updateClass = async(req,res)=>{
+export const updateClass = async (req, res) => {
 
     const result =
         await classService.updateClass(
@@ -39,7 +39,7 @@ export const updateClass = async(req,res)=>{
 };
 
 
-export const deleteClass = async(req,res)=>{
+export const deleteClass = async (req, res) => {
 
     const result =
         await classService.deleteClass(req.params.id);
@@ -47,17 +47,22 @@ export const deleteClass = async(req,res)=>{
     res.json(result);
 };
 
-export const getClassDetails = async(req,res)=>{
+export const getClassDetails = async (req, res) => {
+
+    console.log(req.user);
+
+    console.log(req.user.userId);
+    console.log(req.user.username);
+    console.log(req.user.role);
 
     const result =
         await classService.getClassDetails(req.params.id);
 
 
-    if(!result)
-    {
+    if (!result) {
         return res.status(404)
             .json({
-                message:"Class not found"
+                message: "Class not found"
             });
     }
 
