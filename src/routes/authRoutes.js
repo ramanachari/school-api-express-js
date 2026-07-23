@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { login } from "../controllers/authController.js";
+import container from "../config/container.js";
+
 
 const router = Router();
+const authController = container.resolve("authController");
 
 /**
  * @swagger
@@ -57,6 +59,6 @@ const router = Router();
  *       401:
  *         description: Invalid username or password
  */
-router.post("/login", login);
+router.post("/login", authController.login);
 
 export default router;

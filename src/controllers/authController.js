@@ -1,17 +1,23 @@
-import * as authService from "../services/authService.js";
+// controllers/authController.js
 
-export const login = async (req, res, next) => {
+export default class AuthController {
 
-    try {
-
-        const { username, password } = req.body;
-
-        const result = await authService.login(username, password);
-
-        res.json(result);
-
+    constructor({ authService }) {
+        this.authService = authService;
     }
-    catch (error) {
-        next(error);
-    }
-};
+
+    login = async (req, res, next) => {
+
+        try {
+
+            const { username, password } = req.body;
+
+            const result = await this.authService.login(username, password);
+
+            res.json(result);
+
+        } catch (error) {
+            next(error);
+        }
+    };
+}

@@ -1,16 +1,21 @@
+// repositories/authRepository.js
+
 import { getPool } from "../config/database.js";
 
-export const getUserByUsername = async (username) => {
+export default class AuthRepository {
 
-    const pool = getPool();
+    async getUserByUsername(username) {
 
-    const result = await pool.request()
-        .input("Username", username)
-        .query(`
-            SELECT *
-            FROM Users
-            WHERE Username = @Username
-        `);
+        const pool = getPool();
 
-    return result.recordset[0];
-};
+        const result = await pool.request()
+            .input("Username", username)
+            .query(`
+                SELECT *
+                FROM Users
+                WHERE Username = @Username
+            `);
+
+        return result.recordset[0];
+    }
+}
